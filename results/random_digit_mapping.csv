@@ -1,0 +1,401 @@
+distribution,roll,display_digit,outcome
+day_type,1,01,Busy
+Busy demand,1,01,40
+Normal demand,1,01,40
+Quiet demand,1,01,40
+day_type,2,02,Busy
+Busy demand,2,02,40
+Normal demand,2,02,40
+Quiet demand,2,02,40
+day_type,3,03,Busy
+Busy demand,3,03,40
+Normal demand,3,03,40
+Quiet demand,3,03,40
+day_type,4,04,Busy
+Busy demand,4,04,50
+Normal demand,4,04,40
+Quiet demand,4,04,40
+day_type,5,05,Busy
+Busy demand,5,05,50
+Normal demand,5,05,40
+Quiet demand,5,05,40
+day_type,6,06,Busy
+Busy demand,6,06,50
+Normal demand,6,06,40
+Quiet demand,6,06,40
+day_type,7,07,Busy
+Busy demand,7,07,50
+Normal demand,7,07,40
+Quiet demand,7,07,40
+day_type,8,08,Busy
+Busy demand,8,08,50
+Normal demand,8,08,40
+Quiet demand,8,08,40
+day_type,9,09,Busy
+Busy demand,9,09,60
+Normal demand,9,09,40
+Quiet demand,9,09,40
+day_type,10,10,Busy
+Busy demand,10,10,60
+Normal demand,10,10,40
+Quiet demand,10,10,40
+day_type,11,11,Busy
+Busy demand,11,11,60
+Normal demand,11,11,50
+Quiet demand,11,11,40
+day_type,12,12,Busy
+Busy demand,12,12,60
+Normal demand,12,12,50
+Quiet demand,12,12,40
+day_type,13,13,Busy
+Busy demand,13,13,60
+Normal demand,13,13,50
+Quiet demand,13,13,40
+day_type,14,14,Busy
+Busy demand,14,14,60
+Normal demand,14,14,50
+Quiet demand,14,14,40
+day_type,15,15,Busy
+Busy demand,15,15,60
+Normal demand,15,15,50
+Quiet demand,15,15,40
+day_type,16,16,Busy
+Busy demand,16,16,60
+Normal demand,16,16,50
+Quiet demand,16,16,40
+day_type,17,17,Busy
+Busy demand,17,17,60
+Normal demand,17,17,50
+Quiet demand,17,17,40
+day_type,18,18,Busy
+Busy demand,18,18,60
+Normal demand,18,18,50
+Quiet demand,18,18,40
+day_type,19,19,Busy
+Busy demand,19,19,60
+Normal demand,19,19,50
+Quiet demand,19,19,40
+day_type,20,20,Busy
+Busy demand,20,20,60
+Normal demand,20,20,50
+Quiet demand,20,20,40
+day_type,21,21,Busy
+Busy demand,21,21,60
+Normal demand,21,21,50
+Quiet demand,21,21,40
+day_type,22,22,Busy
+Busy demand,22,22,60
+Normal demand,22,22,50
+Quiet demand,22,22,40
+day_type,23,23,Busy
+Busy demand,23,23,60
+Normal demand,23,23,50
+Quiet demand,23,23,40
+day_type,24,24,Busy
+Busy demand,24,24,70
+Normal demand,24,24,50
+Quiet demand,24,24,40
+day_type,25,25,Busy
+Busy demand,25,25,70
+Normal demand,25,25,50
+Quiet demand,25,25,40
+day_type,26,26,Busy
+Busy demand,26,26,70
+Normal demand,26,26,50
+Quiet demand,26,26,40
+day_type,27,27,Busy
+Busy demand,27,27,70
+Normal demand,27,27,50
+Quiet demand,27,27,40
+day_type,28,28,Busy
+Busy demand,28,28,70
+Normal demand,28,28,50
+Quiet demand,28,28,40
+day_type,29,29,Busy
+Busy demand,29,29,70
+Normal demand,29,29,60
+Quiet demand,29,29,40
+day_type,30,30,Busy
+Busy demand,30,30,70
+Normal demand,30,30,60
+Quiet demand,30,30,40
+day_type,31,31,Busy
+Busy demand,31,31,70
+Normal demand,31,31,60
+Quiet demand,31,31,40
+day_type,32,32,Busy
+Busy demand,32,32,70
+Normal demand,32,32,60
+Quiet demand,32,32,40
+day_type,33,33,Busy
+Busy demand,33,33,70
+Normal demand,33,33,60
+Quiet demand,33,33,40
+day_type,34,34,Busy
+Busy demand,34,34,70
+Normal demand,34,34,60
+Quiet demand,34,34,40
+day_type,35,35,Busy
+Busy demand,35,35,70
+Normal demand,35,35,60
+Quiet demand,35,35,40
+day_type,36,36,Normal
+Busy demand,36,36,70
+Normal demand,36,36,60
+Quiet demand,36,36,40
+day_type,37,37,Normal
+Busy demand,37,37,70
+Normal demand,37,37,60
+Quiet demand,37,37,40
+day_type,38,38,Normal
+Busy demand,38,38,70
+Normal demand,38,38,60
+Quiet demand,38,38,40
+day_type,39,39,Normal
+Busy demand,39,39,70
+Normal demand,39,39,60
+Quiet demand,39,39,40
+day_type,40,40,Normal
+Busy demand,40,40,70
+Normal demand,40,40,60
+Quiet demand,40,40,40
+day_type,41,41,Normal
+Busy demand,41,41,70
+Normal demand,41,41,60
+Quiet demand,41,41,40
+day_type,42,42,Normal
+Busy demand,42,42,70
+Normal demand,42,42,60
+Quiet demand,42,42,40
+day_type,43,43,Normal
+Busy demand,43,43,70
+Normal demand,43,43,60
+Quiet demand,43,43,40
+day_type,44,44,Normal
+Busy demand,44,44,80
+Normal demand,44,44,60
+Quiet demand,44,44,40
+day_type,45,45,Normal
+Busy demand,45,45,80
+Normal demand,45,45,60
+Quiet demand,45,45,50
+day_type,46,46,Normal
+Busy demand,46,46,80
+Normal demand,46,46,60
+Quiet demand,46,46,50
+day_type,47,47,Normal
+Busy demand,47,47,80
+Normal demand,47,47,60
+Quiet demand,47,47,50
+day_type,48,48,Normal
+Busy demand,48,48,80
+Normal demand,48,48,60
+Quiet demand,48,48,50
+day_type,49,49,Normal
+Busy demand,49,49,80
+Normal demand,49,49,60
+Quiet demand,49,49,50
+day_type,50,50,Normal
+Busy demand,50,50,80
+Normal demand,50,50,60
+Quiet demand,50,50,50
+day_type,51,51,Normal
+Busy demand,51,51,80
+Normal demand,51,51,60
+Quiet demand,51,51,50
+day_type,52,52,Normal
+Busy demand,52,52,80
+Normal demand,52,52,60
+Quiet demand,52,52,50
+day_type,53,53,Normal
+Busy demand,53,53,80
+Normal demand,53,53,60
+Quiet demand,53,53,50
+day_type,54,54,Normal
+Busy demand,54,54,80
+Normal demand,54,54,60
+Quiet demand,54,54,50
+day_type,55,55,Normal
+Busy demand,55,55,80
+Normal demand,55,55,60
+Quiet demand,55,55,50
+day_type,56,56,Normal
+Busy demand,56,56,80
+Normal demand,56,56,60
+Quiet demand,56,56,50
+day_type,57,57,Normal
+Busy demand,57,57,80
+Normal demand,57,57,60
+Quiet demand,57,57,50
+day_type,58,58,Normal
+Busy demand,58,58,80
+Normal demand,58,58,60
+Quiet demand,58,58,50
+day_type,59,59,Normal
+Busy demand,59,59,80
+Normal demand,59,59,60
+Quiet demand,59,59,50
+day_type,60,60,Normal
+Busy demand,60,60,80
+Normal demand,60,60,60
+Quiet demand,60,60,50
+day_type,61,61,Normal
+Busy demand,61,61,80
+Normal demand,61,61,60
+Quiet demand,61,61,50
+day_type,62,62,Normal
+Busy demand,62,62,80
+Normal demand,62,62,60
+Quiet demand,62,62,50
+day_type,63,63,Normal
+Busy demand,63,63,80
+Normal demand,63,63,60
+Quiet demand,63,63,50
+day_type,64,64,Normal
+Busy demand,64,64,80
+Normal demand,64,64,60
+Quiet demand,64,64,50
+day_type,65,65,Normal
+Busy demand,65,65,80
+Normal demand,65,65,60
+Quiet demand,65,65,50
+day_type,66,66,Normal
+Busy demand,66,66,80
+Normal demand,66,66,60
+Quiet demand,66,66,50
+day_type,67,67,Normal
+Busy demand,67,67,80
+Normal demand,67,67,60
+Quiet demand,67,67,60
+day_type,68,68,Normal
+Busy demand,68,68,80
+Normal demand,68,68,60
+Quiet demand,68,68,60
+day_type,69,69,Normal
+Busy demand,69,69,80
+Normal demand,69,69,70
+Quiet demand,69,69,60
+day_type,70,70,Normal
+Busy demand,70,70,80
+Normal demand,70,70,70
+Quiet demand,70,70,60
+day_type,71,71,Normal
+Busy demand,71,71,80
+Normal demand,71,71,70
+Quiet demand,71,71,60
+day_type,72,72,Normal
+Busy demand,72,72,80
+Normal demand,72,72,70
+Quiet demand,72,72,60
+day_type,73,73,Normal
+Busy demand,73,73,80
+Normal demand,73,73,70
+Quiet demand,73,73,60
+day_type,74,74,Normal
+Busy demand,74,74,80
+Normal demand,74,74,70
+Quiet demand,74,74,60
+day_type,75,75,Normal
+Busy demand,75,75,80
+Normal demand,75,75,70
+Quiet demand,75,75,60
+day_type,76,76,Normal
+Busy demand,76,76,80
+Normal demand,76,76,70
+Quiet demand,76,76,60
+day_type,77,77,Normal
+Busy demand,77,77,80
+Normal demand,77,77,70
+Quiet demand,77,77,60
+day_type,78,78,Normal
+Busy demand,78,78,80
+Normal demand,78,78,70
+Quiet demand,78,78,60
+day_type,79,79,Normal
+Busy demand,79,79,90
+Normal demand,79,79,70
+Quiet demand,79,79,60
+day_type,80,80,Normal
+Busy demand,80,80,90
+Normal demand,80,80,70
+Quiet demand,80,80,60
+day_type,81,81,Quiet
+Busy demand,81,81,90
+Normal demand,81,81,70
+Quiet demand,81,81,60
+day_type,82,82,Quiet
+Busy demand,82,82,90
+Normal demand,82,82,70
+Quiet demand,82,82,60
+day_type,83,83,Quiet
+Busy demand,83,83,90
+Normal demand,83,83,70
+Quiet demand,83,83,70
+day_type,84,84,Quiet
+Busy demand,84,84,90
+Normal demand,84,84,70
+Quiet demand,84,84,70
+day_type,85,85,Quiet
+Busy demand,85,85,90
+Normal demand,85,85,70
+Quiet demand,85,85,70
+day_type,86,86,Quiet
+Busy demand,86,86,90
+Normal demand,86,86,70
+Quiet demand,86,86,70
+day_type,87,87,Quiet
+Busy demand,87,87,90
+Normal demand,87,87,70
+Quiet demand,87,87,70
+day_type,88,88,Quiet
+Busy demand,88,88,90
+Normal demand,88,88,70
+Quiet demand,88,88,70
+day_type,89,89,Quiet
+Busy demand,89,89,90
+Normal demand,89,89,80
+Quiet demand,89,89,70
+day_type,90,90,Quiet
+Busy demand,90,90,90
+Normal demand,90,90,80
+Quiet demand,90,90,70
+day_type,91,91,Quiet
+Busy demand,91,91,90
+Normal demand,91,91,80
+Quiet demand,91,91,70
+day_type,92,92,Quiet
+Busy demand,92,92,90
+Normal demand,92,92,80
+Quiet demand,92,92,70
+day_type,93,93,Quiet
+Busy demand,93,93,90
+Normal demand,93,93,80
+Quiet demand,93,93,70
+day_type,94,94,Quiet
+Busy demand,94,94,100
+Normal demand,94,94,80
+Quiet demand,94,94,70
+day_type,95,95,Quiet
+Busy demand,95,95,100
+Normal demand,95,95,80
+Quiet demand,95,95,80
+day_type,96,96,Quiet
+Busy demand,96,96,100
+Normal demand,96,96,80
+Quiet demand,96,96,80
+day_type,97,97,Quiet
+Busy demand,97,97,100
+Normal demand,97,97,90
+Quiet demand,97,97,80
+day_type,98,98,Quiet
+Busy demand,98,98,100
+Normal demand,98,98,90
+Quiet demand,98,98,80
+day_type,99,99,Quiet
+Busy demand,99,99,100
+Normal demand,99,99,90
+Quiet demand,99,99,80
+day_type,100,00,Quiet
+Busy demand,100,00,100
+Normal demand,100,00,90
+Quiet demand,100,00,80

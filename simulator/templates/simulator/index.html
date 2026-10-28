@@ -1,0 +1,158 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f6f3eb">
+  <title>Player-managed potion shop</title>
+  <link rel="stylesheet" href="{% static 'simulator/app.css' %}">
+  <script src="{% static 'simulator/app.js' %}" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to planner</a>
+  <header class="site-header">
+    <a class="wordmark" href="{% url 'index' %}">
+      <svg class="shop-mark" viewBox="0 0 32 38" fill="none" aria-hidden="true"><path d="M11 3h10M12 3v10L5 25a7 7 0 0 0 6 10h10a7 7 0 0 0 6-10l-7-12V3M9 23h14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 27h14M12 30h8" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+      <span>Potion shop<span class="wordmark-caption">Stock &amp; brewing planner</span></span>
+    </a>
+    <a class="rules-link" href="#method">How it works <span aria-hidden="true">↙</span></a>
+  </header>
+
+  <main id="main">
+    <section class="page-heading" aria-labelledby="page-title">
+      <p class="eyebrow">Before the shop opens</p>
+      <h1 id="page-title">How much will you brew today?</h1>
+      <p>Choose your opening batch. Find the balance between empty shelves and unsold potions.</p>
+    </section>
+
+    <div class="workspace">
+      <aside class="controls" aria-labelledby="batch-title">
+        <form method="post" action="{% url 'index' %}" id="experiment-form">
+          {% csrf_token %}
+          <p class="section-kicker">Your decision</p>
+          <h2 id="batch-title">Prepare a batch</h2>
+          <p class="control-note">Set your stock and the gold earned or spent on each potion.</p>
+          {% if form.errors %}
+            <div class="error-summary" role="alert">
+              <p>Check the inputs and try again.</p>
+              {{ form.non_field_errors }}
+            </div>
+          {% endif %}
+          {% for field in form %}
+            {% if field.name == 'chosen_stock' or field.name == 'unit_cost' or field.name == 'selling_price' or field.name == 'salvage_value' %}
+              {% include 'simulator/_field.html' with field=field only %}
+            {% endif %}
+          {% endfor %}
+          <fieldset class="stock-range">
+            <legend>Comparison range</legend>
+            {% include 'simulator/_field.html' with field=form.stock_min only %}
+            {% include 'simulator/_field.html' with field=form.stock_max only %}
+            {% include 'simulator/_field.html' with field=form.bundle_size only %}
+            <p class="field-help">Include your crafting quantity. Bounds are inclusive; quantities follow the step from the minimum.</p>
+          </fieldset>
+          <details class="advanced" {% if form.errors %}open{% endif %}>
+            <summary>Simulation settings</summary>
+            <div class="advanced-content">
+              {% for field in form %}
+                {% if field.name == 'days_per_run' or field.name == 'runs' or field.name == 'base_seed' %}
+                  {% include 'simulator/_field.html' with field=field only %}
+                {% endif %}
+              {% endfor %}
+            </div>
+          </details>
+          <a class="demand-link" href="#demand-settings">Edit customer demand <span aria-hidden="true">↓</span></a>
+          <button class="run-button" type="submit"><span>Run simulation</span><span aria-hidden="true">→</span></button>
+          <a class="reset" href="{% url 'index' %}">Reset inputs</a>
+        </form>
+      </aside>
+
+      <section class="results" aria-labelledby="results-title">
+        {% if result %}
+          <div class="results-heading">
+            <div><p class="section-kicker">At closing time</p><h2 id="results-title">Your batch, put to the test.</h2></div>
+            <a class="text-button" href="#result-tables">View result tables <span aria-hidden="true">↓</span></a>
+          </div>
+          <p class="results-context">{{ count|floatformat:"0g" }} simulated shop days. Every batch faces the same demand within each run.</p>
+
+          <div class="metric-row">
+            <div class="metric"><p class="metric-label">Your crafting quantity</p><p class="metric-value">{{ selected }}<span>potions</span></p><p class="metric-caption">prepared before opening</p></div>
+            <div class="metric"><p class="metric-label">Mean score</p><p class="metric-value accent">{{ chosen.sim_textbook_score|floatformat:2 }}<span>gold</span></p><p class="metric-caption">per shop day</p></div>
+            <div class="metric metric--benchmark"><p class="metric-label">Best in this range</p><p class="metric-value">{{ best }}<span>potions</span></p><p class="metric-caption">best among the quantities tested</p></div>
+          </div>
+
+          <section class="chart-section" aria-labelledby="chart-title">
+            <div class="chart-heading"><div><h3 id="chart-title">Return by batch size</h3><p>Mean textbook score by opening batch</p></div><div class="legend"><span><i class="line-key line-key--simulation"></i>Simulation</span><span><i class="line-key"></i>Exact</span></div></div>
+            <div class="chart-scroll" tabindex="0" role="region" aria-label="Stock comparison chart; scroll horizontally on small screens">
+              <svg class="stock-chart" viewBox="0 0 760 260" role="img" aria-labelledby="chart-svg-title chart-svg-desc">
+                <title id="chart-svg-title">Simulated and exact textbook score by stock quantity</title>
+                <desc id="chart-svg-desc">Your batch is {{ selected }} potions. Its mean score is {{ chosen.sim_textbook_score|floatformat:2 }} gold. The best simulated score occurs at {{ best }} potions.</desc>
+                {% for t in ticks %}<line x1="45" x2="735" y1="{{ t.y }}" y2="{{ t.y }}" class="grid-line"/><text x="36" y="{{ t.y }}" text-anchor="end" class="tick">{{ t.value }}</text>{% endfor %}
+                {% for t in xticks %}<text x="{{ t.x }}" y="245" text-anchor="middle" class="tick">{{ t.value }}</text>{% endfor %}
+                <polyline class="stock-line stock-line--exact" points="{{ exact_points }}"/>
+                <polyline class="stock-line stock-line--simulation" points="{{ sim_points }}"/>
+              </svg>
+            </div>
+            <p class="axis-caption">Potions in the opening batch</p>
+          </section>
+
+          <div class="secondary-metrics">
+            <section aria-labelledby="outcome-title"><h3 id="outcome-title">Your daily outcome</h3><dl><div><dt>Unsold potions</dt><dd>{{ chosen.sim_unsold|floatformat:2 }}</dd></div><div><dt>Unmet potion demand</dt><dd>{{ chosen.sim_unmet|floatformat:2 }}</dd></div><div><dt>Cash profit</dt><dd>{{ chosen.sim_cash_profit|floatformat:2 }} <span>gold</span></dd></div></dl></section>
+            <section aria-labelledby="verification-title"><h3 id="verification-title">Check the calculation</h3><dl><div><dt>Exact expected score</dt><dd>{{ chosen.exact_textbook_score|floatformat:2 }}</dd></div><div><dt>Simulation minus exact</dt><dd>{{ chosen.score_error|floatformat:2 }}</dd></div><div><dt>Standard error</dt><dd>{{ chosen.score_standard_error|floatformat:2 }}</dd></div></dl></section>
+          </div>
+          <p class="finding">The textbook score also deducts foregone margin on unmet demand. Cash profit records sales, production cost and closing clearance. The cash-only benchmark selects <strong>{{ cash_best }} potions.</strong></p>
+        {% else %}
+          <div class="empty-state"><p class="section-kicker">Before you open</p><h2 id="results-title">A few inputs need a second look.</h2><p>Correct the marked fields, then run your batch again.</p></div>
+        {% endif %}
+      </section>
+    </div>
+
+    {% if result %}{% include 'simulator/_evidence_tables.html' %}{% endif %}
+
+    <details class="demand-editor" id="demand-settings" {% if form.errors %}open{% endif %}>
+      <summary>Customer demand <span>Quantities &amp; probabilities</span></summary>
+      <div class="demand-editor-content">
+        <p class="control-note">Set the possible quantities customers request, then the chance of each outcome. Each simulated day first picks a day type, then a demand quantity.</p>
+        <fieldset class="demand-quantities">
+          <legend>Possible demand</legend>
+          <p class="field-help">Enter distinct quantities in ascending order.</p>
+          <div class="quantity-fields">
+            {% for field in form.demand_fields %}{% include 'simulator/_field.html' with field=field only %}{% endfor %}
+          </div>
+        </fieldset>
+        <div class="profile-fields">
+          {% for profile in form.demand_profiles %}
+            <fieldset class="demand-profile">
+              <legend>{{ profile.name.value }}</legend>
+              {% include 'simulator/_field.html' with field=profile.name only %}
+              {% include 'simulator/_field.html' with field=profile.probability only %}
+              <p class="field-help">Chance of each demand quantity on this day type:</p>
+              <div class="outcome-fields">
+                {% for outcome in profile.outcomes %}
+                  <div class="field{% if outcome.field.errors %} field--invalid{% endif %}">
+                    <label for="{{ outcome.field.id_for_label }}"><span data-demand-label="{{ forloop.counter0 }}">{{ outcome.quantity }}</span> potions (%)</label>
+                    {{ outcome.field }}
+                    {{ outcome.field.errors }}
+                  </div>
+                {% endfor %}
+              </div>
+            </fieldset>
+          {% endfor %}
+        </div>
+        <p class="field-help">Day-type probabilities must total 100%. The demand probabilities inside each day type must also total 100%.</p>
+        <button class="apply-demand" type="submit" form="experiment-form">Apply demand &amp; run simulation</button>
+      </div>
+    </details>
+
+    <section class="method" id="method" aria-labelledby="method-title">
+      <div><p class="section-kicker">The shop rules</p><h2 id="method-title">One batch.<br> One trading day.</h2></div>
+      <div class="method-copy">
+        <p>Buy ingredients and bottles before opening. One kit makes one potion. NPC customers buy from your prepared batch; at closing, a wholesaler buys the leftovers at a discount.</p>
+        <p>Each simulated day is a separate one-day challenge. Recipes, brewing time and stock carryover are outside the model. Busy, Normal and Quiet demand probabilities come from the supplied course example, rather than an existing game. Demand stays fixed when price changes, so price experiments measure margins rather than customer price response.</p>
+        <details class="calculation"><summary>Calculation and scoring</summary><p>Cash = selling revenue − production cost + closing clearance.<br>Textbook score = cash − (selling price − production cost) × unmet demand.</p></details>
+      </div>
+    </section>
+  </main>
+  <footer><span>Player-managed potion shop</span><span>Modelling &amp; simulation</span></footer>
+</body>
+</html>

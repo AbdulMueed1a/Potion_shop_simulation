@@ -1,0 +1,53 @@
+{
+  "scenario": "Player-managed potion shop",
+  "python_version": "3.12.14",
+  "random_generator": "Python random.Random (Mersenne Twister)",
+  "seed_rule": "base_seed + zero-based run index",
+  "first_seed": 20261026,
+  "last_seed": 20261055,
+  "runs": 30,
+  "days_per_run": 1000,
+  "generated_day_scenarios": 30000,
+  "stock_options": [
+    0,
+    10,
+    20,
+    30,
+    40,
+    50,
+    60,
+    70,
+    80,
+    90,
+    100
+  ],
+  "stock_day_evaluations": 330000,
+  "sim_score_best": [
+    70
+  ],
+  "exact_score_best": [
+    70
+  ],
+  "exact_cash_best": [
+    60
+  ],
+  "sim_cash_best": [
+    60
+  ],
+  "run_score_wins_including_ties": {
+    "0": 0,
+    "10": 0,
+    "20": 0,
+    "30": 0,
+    "40": 0,
+    "50": 0,
+    "60": 0,
+    "70": 30,
+    "80": 0,
+    "90": 0,
+    "100": 0
+  },
+  "audit_stock": 70,
+  "audit_selection": "first simulated-score maximizer if tied",
+  "input_basis": "Illustrative classroom adaptation of supplied notes, pp. 66-76"
+}

@@ -1,0 +1,39 @@
+test_changed_price (simulator.tests.WebTests.test_changed_price) ... ok
+test_csrf (simulator.tests.WebTests.test_csrf) ... ok
+test_invalid_price (simulator.tests.WebTests.test_invalid_price) ... ok
+test_invalid_probability (simulator.tests.WebTests.test_invalid_probability) ... ok
+test_page (simulator.tests.WebTests.test_page) ... ok
+test_result_tables (simulator.tests.WebTests.test_result_tables) ... ok
+test_user_selects_stock (simulator.tests.WebTests.test_user_selects_stock) ... ok
+test_all_conditional_digit_assignments (test_simulation.InventoryTests.test_all_conditional_digit_assignments) ... ok
+test_all_day_digit_assignments (test_simulation.InventoryTests.test_all_day_digit_assignments) ... ok
+test_deterministic_demand_matches_exact_for_every_stock (test_simulation.InventoryTests.test_deterministic_demand_matches_exact_for_every_stock) ... ok
+test_digit_boundaries_and_zero_probability (test_simulation.InventoryTests.test_digit_boundaries_and_zero_probability) ... ok
+test_exact_expectation_by_exhaustive_digit_pairs (test_simulation.InventoryTests.test_exact_expectation_by_exhaustive_digit_pairs) ... ok
+test_fixed_seed_reproduces_trace (test_simulation.InventoryTests.test_fixed_seed_reproduces_trace) ... ok
+test_hand_case_demand_above_stock (test_simulation.InventoryTests.test_hand_case_demand_above_stock) ... ok
+test_hand_case_demand_below_stock (test_simulation.InventoryTests.test_hand_case_demand_below_stock) ... ok
+test_hand_case_demand_equals_stock (test_simulation.InventoryTests.test_hand_case_demand_equals_stock) ... ok
+test_invalid_economics_rejected (test_simulation.InventoryTests.test_invalid_economics_rejected) ... ok
+test_invalid_probabilities_rejected (test_simulation.InventoryTests.test_invalid_probabilities_rejected) ... ok
+test_invalid_structure_and_experiment_settings_rejected (test_simulation.InventoryTests.test_invalid_structure_and_experiment_settings_rejected) ... ok
+test_local_rng_does_not_change_global_rng (test_simulation.InventoryTests.test_local_rng_does_not_change_global_rng) ... ok
+test_marginal_distribution_matches_hand_calculation (test_simulation.InventoryTests.test_marginal_distribution_matches_hand_calculation) ... ok
+test_negative_stock_or_demand_rejected (test_simulation.InventoryTests.test_negative_stock_or_demand_rejected) ... ok
+test_next_seed_changes_trace (test_simulation.InventoryTests.test_next_seed_changes_trace) ... ok
+test_objective_choice_changes_recommendation (test_simulation.InventoryTests.test_objective_choice_changes_recommendation) ... ok
+test_price_change_recalculates_winner (test_simulation.InventoryTests.test_price_change_recalculates_winner) ... ok
+test_shared_trace_accounting_and_run_counts (test_simulation.InventoryTests.test_shared_trace_accounting_and_run_counts) ... ok
+test_stock_range_adapts_to_support_and_bundle (test_simulation.InventoryTests.test_stock_range_adapts_to_support_and_bundle) ... ok
+test_textbook_ten_day_total (test_simulation.InventoryTests.test_textbook_ten_day_total) ... ok
+test_ties_are_reported (test_simulation.InventoryTests.test_ties_are_reported) ... ok
+test_zero_demand (test_simulation.InventoryTests.test_zero_demand) ... ok
+test_zero_stock (test_simulation.InventoryTests.test_zero_stock) ... ok
+
+----------------------------------------------------------------------
+Ran 31 tests in 5.686s
+
+OK
+Found 31 test(s).
+Skipping setup of unused database(s): default.
+System check identified no issues (0 silenced).

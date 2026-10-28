@@ -1,0 +1,56 @@
+<section class="evidence" id="result-tables" aria-labelledby="tables-title">
+  <p class="section-kicker">Behind the result</p>
+  <h2 id="tables-title">Simulation tables</h2>
+  <p class="control-note">Calculated from your current inputs. Gold values are rounded to two decimal places.</p>
+
+  <details class="evidence-group" open>
+    <summary>Stock comparison</summary>
+    <div class="table-scroll" tabindex="0" role="region" aria-label="Stock comparison results">
+      <table>
+        <caption>Mean results across {{ run_count }} runs of {{ days_per_run }} shop days. Your chosen batch is {{ selected }} potions.</caption>
+        <thead><tr><th scope="col">Stock</th><th scope="col">Mean score</th><th scope="col">Exact score</th><th scope="col">Cash profit</th><th scope="col">Unsold</th><th scope="col">Unmet</th><th scope="col">Standard error</th><th scope="col">Score − exact</th></tr></thead>
+        <tbody>{% for row in summary_rows %}<tr{% if row.stock == selected %} class="selected-row"{% endif %}><th scope="row">{{ row.stock }}{% if row.stock == selected %}<span class="row-note">Your batch</span>{% endif %}</th><td>{{ row.sim_textbook_score|floatformat:2 }}</td><td>{{ row.exact_textbook_score|floatformat:2 }}</td><td>{{ row.sim_cash_profit|floatformat:2 }}</td><td>{{ row.sim_unsold|floatformat:2 }}</td><td>{{ row.sim_unmet|floatformat:2 }}</td><td>{{ row.score_standard_error|floatformat:2 }}</td><td>{{ row.score_error|floatformat:2 }}</td></tr>{% endfor %}</tbody>
+      </table>
+    </div>
+  </details>
+
+  <details class="evidence-group">
+    <summary>Per-run results for your batch</summary>
+    <div class="table-scroll" tabindex="0" role="region" aria-label="Per-run results">
+      <table>
+        <caption>{{ selected }} potions per shop day. Each row averages {{ days_per_run }} days from one independently seeded run.</caption>
+        <thead><tr><th scope="col">Run</th><th scope="col">Seed</th><th scope="col">Stock</th><th scope="col">Mean score</th><th scope="col">Cash profit</th><th scope="col">Unsold</th><th scope="col">Unmet</th></tr></thead>
+        <tbody>{% for row in run_rows %}<tr><th scope="row">{{ row.run }}</th><td>{{ row.seed }}</td><td>{{ row.stock }}</td><td>{{ row.textbook_score|floatformat:2 }}</td><td>{{ row.cash_profit|floatformat:2 }}</td><td>{{ row.unsold|floatformat:2 }}</td><td>{{ row.unmet|floatformat:2 }}</td></tr>{% endfor %}</tbody>
+      </table>
+    </div>
+  </details>
+
+  <details class="evidence-group">
+    <summary>Daily calculation audit</summary>
+    <div class="table-scroll" tabindex="0" role="region" aria-label="Daily calculation audit">
+      <table>
+        <caption>First {{ audit_rows|length }} days of run 1 at your chosen stock of {{ selected }}. Stock is prepared again for each independent day.</caption>
+        <thead><tr><th scope="col">Day</th><th scope="col">Day type</th><th scope="col">Demand</th><th scope="col">Stock</th><th scope="col">Sold</th><th scope="col">Unsold</th><th scope="col">Unmet</th><th scope="col">Sales</th><th scope="col">Production cost</th><th scope="col">Clearance</th><th scope="col">Unmet deduction</th><th scope="col">Cash profit</th><th scope="col">Score</th></tr></thead>
+        <tbody>{% for row in audit_rows %}<tr><th scope="row">{{ row.day }}</th><td>{{ row.day_type }}</td><td>{{ row.demand }}</td><td>{{ row.stock }}</td><td>{{ row.sold }}</td><td>{{ row.unsold }}</td><td>{{ row.unmet }}</td><td>{{ row.revenue|floatformat:2 }}</td><td>{{ row.purchase_cost|floatformat:2 }}</td><td>{{ row.recovery|floatformat:2 }}</td><td>{{ row.unmet_deduction|floatformat:2 }}</td><td>{{ row.cash_profit|floatformat:2 }}</td><td>{{ row.textbook_score|floatformat:2 }}</td></tr>{% endfor %}</tbody>
+      </table>
+    </div>
+  </details>
+
+  <details class="evidence-group" id="demand-trace" {% if trace_requested %}open{% endif %}>
+    <summary>Generated demand trace</summary>
+    <div class="table-scroll" tabindex="0" role="region" aria-label="Generated demand trace">
+      <table>
+        <caption>All {{ count|floatformat:"0g" }} sampled shop days, shared by every stock quantity. Rolls use integers 1–100.</caption>
+        <thead><tr><th scope="col">Run</th><th scope="col">Seed</th><th scope="col">Day</th><th scope="col">Day-type roll</th><th scope="col">Demand roll</th><th scope="col">Day type</th><th scope="col">Demand</th></tr></thead>
+        <tbody>{% for row in trace_page %}<tr><th scope="row">{{ row.run }}</th><td>{{ row.seed }}</td><td>{{ row.day }}</td><td>{{ row.day_roll }}</td><td>{{ row.demand_roll }}</td><td>{{ row.day_type }}</td><td>{{ row.demand }}</td></tr>{% endfor %}</tbody>
+      </table>
+    </div>
+    <form class="trace-pagination" method="post" action="{% url 'index' %}#demand-trace" aria-label="Demand trace pagination">
+      {% csrf_token %}
+      {% for key,value in view_values.items %}<input type="hidden" name="{{ key }}" value="{{ value }}">{% endfor %}
+      <button type="submit" name="trace_page" value="{% if trace_page.has_previous %}{{ trace_page.previous_page_number }}{% else %}1{% endif %}" {% if not trace_page.has_previous %}disabled{% endif %}>Previous</button>
+      <span>Rows {{ trace_page.start_index }}–{{ trace_page.end_index }} of {{ count|floatformat:"0g" }} · Page {{ trace_page.number }} of {{ trace_page.paginator.num_pages }}</span>
+      <button type="submit" name="trace_page" value="{% if trace_page.has_next %}{{ trace_page.next_page_number }}{% else %}{{ trace_page.number }}{% endif %}" {% if not trace_page.has_next %}disabled{% endif %}>Next</button>
+    </form>
+  </details>
+</section>
