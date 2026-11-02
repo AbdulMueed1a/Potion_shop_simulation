@@ -51,8 +51,18 @@ htmlcov/
 # Local cache and tool-specific directories
 .ua/
 
+# Presentations, PDFs, and Office documents
+*.pdf
+*.ppt
+*.pptx
+*.doc
+*.docx
+
 # Temporary and office lock files
 ~$*
+
+# Internal notes and verification markdown (preserves README.md)
+verification/*.md
 
 # OS and editor files
 .DS_Store
